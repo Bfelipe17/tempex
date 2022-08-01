@@ -10,4 +10,8 @@ defmodule Weather do
 
     "#{@api}#{location}&appid=#{get_appid()}"
   end
+
+  def kelvin_to_celsius(kelvin) do
+    (kelvin - 273.15) |> Float.round(1)
+  end
 end
