@@ -1,18 +1,13 @@
 defmodule Weather do
-  @moduledoc """
-  Documentation for `Weather`.
-  """
+  @api "http://api.openweathermap.org/data/2.5/weather?q="
 
-  @doc """
-  Hello world.
+  def get_appid() do
+    System.get_env("API_KEY")
+  end
 
-  ## Examples
+  def get_endpoint(location) do
+    location = URI.encode(location)
 
-      iex> Weather.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    "#{@api}#{location}&appid=#{get_appid()}"
   end
 end
