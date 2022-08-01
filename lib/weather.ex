@@ -34,8 +34,7 @@ defmodule Weather do
 
   defp compute_temperature(%{"main" => %{"temp" => temp}}) do
     try do
-      temp |> kelvin_to_celsius()
-
+      temp = kelvin_to_celsius(temp)
       {:ok, temp}
     rescue
       _ -> :error
