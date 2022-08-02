@@ -11,18 +11,6 @@ defmodule Weather do
     Task.async(fn -> temperature_of(city) end)
   end
 
-  def get_temperature() do
-    receive do
-      {manager_pid, location} ->
-        send(manager_pid, {:ok, temperature_of(location)})
-
-      _ ->
-        IO.puts("Error")
-    end
-
-    get_temperature()
-  end
-
   def display_city(city) do
     IO.inspect(city)
   end
